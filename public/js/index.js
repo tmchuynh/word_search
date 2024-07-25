@@ -45,9 +45,6 @@ const wordList = [
       "Colt",
       "Condor",
       "Cougar",
-      "Cow",
-      "Coyote",
-      "Crab",
       "Crane",
       "Creature",
       "Crocodile",
@@ -55,9 +52,14 @@ const wordList = [
       "Cub",
       "Cur",
       "Cygnet",
+      "Cygnet",
+      "Cygnet",
+      "Cygnet",
+      "Cygnet",
       "Deer",
-      "Dingo",
-      "Dodo"
+      "Deer",
+
+
 ];
 const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 let answeredList = [];
@@ -73,14 +75,14 @@ let allAnswered = false;
 // Find the length of the longest word and total length of all words
 wordList.forEach((word) => {
       const wordLength = word.length;
-      if (wordLength > maxWordLength) maxWordLength = wordLength;
+      if (wordLength > maxWordLength) { maxWordLength = wordLength };
       totalWordLength += wordLength;
 });
 
 // Determine grid dimensions
 const dimensions = Math.max(
       maxWordLength,
-      Math.ceil(Math.sqrt(totalWordLength)) + 5
+      Math.ceil(Math.sqrt(totalWordLength)) + 10
 );
 
 // Create a 2D array
@@ -146,6 +148,8 @@ const selectDirection = (word, grid) => {
 // Create and populate the word search grid
 const wordSearch = create2dArray(dimensions, dimensions);
 wordList.sort((a, b) => b.length - a.length);
+console.log(wordList);
+
 wordList.forEach((word) => selectDirection(word.toUpperCase(), wordSearch));
 
 // Fill empty cells with random letters
@@ -172,19 +176,29 @@ const outputGrid = () => {
             table.appendChild(tr);
       });
 
-      for (let i = 0; i < wordList.length; i += 2) {
+      console.log("wordList.length: " + wordList.length);
+      console.log("dimension", dimensions);
+
+      console.log(Math.ceil(wordList.length / dimensions));
+
+      // for (let l = Math.ceil(wordList.length / dimensions); l > 0; l--) {
+
+      for (let i = 0; i < wordList.length; i += Math.ceil(wordList.length / dimensions)) {
             const tr = document.createElement("tr");
             const td1 = document.createElement("td");
             td1.textContent = wordList[i];
             tr.appendChild(td1);
 
-            if (i + 1 < wordList.length) {
-                  const td2 = document.createElement("td");
-                  td2.textContent = wordList[i + 1];
-                  tr.appendChild(td2);
+            for (let j = Math.ceil(wordList.length / dimensions) - 1; j > 0; j--) {
+                  if (i + j < wordList.length) {
+                        const td2 = document.createElement("td");
+                        td2.textContent = wordList[i + 1];
+                        tr.appendChild(td2);
+                  }
             }
             wordListDisplay.appendChild(tr);
       }
+      // }
 };
 
 outputGrid();
@@ -203,7 +217,7 @@ const main = () => {
 
       setInterval(() => {
             timerStarted = true;
-      }, 200);
+      })
 
       setInterval(() => {
             if (timerStarted) {
