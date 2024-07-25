@@ -24,11 +24,6 @@ table td.highlighted {
       background-color: #ffcc00 !important;
 }
 
-table td.answers {
-      background-color: #aacccc;
-      padding: 10px !important;
-}
-
 .correct {
       font-weight: bold;
       color: #ffffff;
