@@ -1,36 +1,15 @@
 // Variables
 const trace = console.log.bind(console);
 const wordList = [
-      "Aardvark",
-      "Albatross",
-      "Alligator",
-      "Amphibian",
-      "Ant",
-      "Anteater",
-      "Antelope",
-      "Ape",
-      "Armadillo",
-      "Baboon",
-      "Badger",
-      "Bat",
-      "Bear",
-      "Beaver",
-      "Beetle",
-      "Bison",
-      "Boar",
-      "Bobcat",
-      "Bovine",
-      "Bronco",
-      "Buck",
-      "Buffalo",
-      "Bug",
-      "Bull",
-      "Bunny",
-      "Calf",
-      "Camel",
-      "Canary",
-      "Canine",
-      "Caribou",
+      "Adventure",
+      "Basketball",
+      "Chocolate",
+      "Dolphin",
+      "Elephant",
+      "Freedom",
+      "Galaxy",
+      "Horizon",
+      "Internet",
       "Cat",
       "Caterpillar",
       "Centipede",
@@ -45,20 +24,56 @@ const wordList = [
       "Colt",
       "Condor",
       "Cougar",
+      "Cow",
+      "Coyote",
+      "Crab",
       "Crane",
       "Creature",
       "Crocodile",
-      "Crow",
-      "Cub",
-      "Cur",
-      "Cygnet",
-      "Cygnet",
-      "Cygnet",
-      "Cygnet",
-      "Cygnet",
-      "Deer",
-      "Deer",
+      "Jigsaw",
+      "Knowledge",
+      "Library",
+      "Mountain",
+      "Notebook",
+      "Ocean",
+      "Pineapple",
+      "Quantum",
+      "Rainbow",
+      "Sunflower",
+      "Television",
+      "Umbrella",
+      "Vacation",
+      "Whisper",
+      "Xylophone",
+      "Yoga",
+      "Zephyr",
+      "Alchemy",
+      "Bridge",
+      "Candle",
+      "Dragon",
+      "Envelope",
+      "Festival",
+      "Giraffe",
+      "Hologram",
+      "Invention",
+      "Journey",
+      "Kite",
+      "Lighthouse",
+      "Miracle",
+      "Nebula",
+      "Orchestra",
+      "Puzzle",
+      "Revolution",
+      "Sculpture",
+      "Tornado",
+      "Universe",
+      "Vortex",
+      "Waterfall",
+      "Xenon",
+      "Youth",
+      "Zenith"
 ];
+
 const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 let answeredList = [];
 let maxWordLength = 0;
@@ -163,6 +178,7 @@ const outputGrid = () => {
       const table = document.getElementById("wordSearch")
       const wordListDisplay = document.getElementById("wordList");
 
+      // Displays the word search grid
       wordSearch.forEach((row, rowIndex) => {
             const tr = document.createElement("tr");
             row.forEach((cell, colIndex) => {
@@ -174,19 +190,19 @@ const outputGrid = () => {
             table.appendChild(tr);
       });
 
-      for (let i = 0; i < wordList.length; i += Math.ceil(wordList.length / dimensions)) {
+      // Displays the word list in alphabetical order
+      const wordsPerRow = Math.ceil(wordList.length / dimensions);
+      for (let i = 0; i < wordList.length; i += wordsPerRow) {
             const tr = document.createElement("tr");
-            const td1 = document.createElement("td");
-            td1.textContent = wordList[i];
-            tr.appendChild(td1);
 
-            for (let j = Math.ceil(wordList.length / dimensions) - 1; j > 0; j--) {
+            for (let j = 0; j < wordsPerRow; j++) {
                   if (i + j < wordList.length) {
-                        const td2 = document.createElement("td");
-                        td2.textContent = wordList[i + 1];
-                        tr.appendChild(td2);
+                        const td = document.createElement("td");
+                        td.textContent = wordList[i + j];
+                        tr.appendChild(td);
                   }
             }
+
             wordListDisplay.appendChild(tr);
       }
 };
