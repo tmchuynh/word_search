@@ -174,11 +174,6 @@ const outputGrid = () => {
             table.appendChild(tr);
       });
 
-      console.log("wordList.length: " + wordList.length);
-      console.log("dimension", dimensions);
-
-      console.log(Math.ceil(wordList.length / dimensions));
-
       for (let i = 0; i < wordList.length; i += Math.ceil(wordList.length / dimensions)) {
             const tr = document.createElement("tr");
             const td1 = document.createElement("td");
