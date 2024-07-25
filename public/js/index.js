@@ -58,8 +58,6 @@ const wordList = [
       "Cygnet",
       "Deer",
       "Deer",
-
-
 ];
 const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 let answeredList = [];
@@ -181,8 +179,6 @@ const outputGrid = () => {
 
       console.log(Math.ceil(wordList.length / dimensions));
 
-      // for (let l = Math.ceil(wordList.length / dimensions); l > 0; l--) {
-
       for (let i = 0; i < wordList.length; i += Math.ceil(wordList.length / dimensions)) {
             const tr = document.createElement("tr");
             const td1 = document.createElement("td");
@@ -198,7 +194,6 @@ const outputGrid = () => {
             }
             wordListDisplay.appendChild(tr);
       }
-      // }
 };
 
 outputGrid();
