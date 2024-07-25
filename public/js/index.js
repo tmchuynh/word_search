@@ -1,5 +1,4 @@
 // Variables
-const trace = console.log.bind(console);
 const tempList = [
       "Adventure",
       "Dolphin",
